@@ -1,0 +1,35 @@
+<md-card
+	layout="column" layout-align="start stretch" layout-padding
+	class="full-height"
+	flex
+>
+	<div layout="row" layout-align="space-around center">
+		<md-button class="md-raised md-primary" ng-click="click_element_by_id('attach')">
+			<md-icon md-svg-icon="img/icons/add.svg"></md-icon>
+			Aggiungi
+		</md-button>
+		<input id="attach" type="file" accept="application/pdf" multiple hide ng-model="mergepdf.model" ub-input-model-change="mergepdf.attach">
+
+		<md-button class="md-raised md-primary" ng-click="mergepdf.merge()">
+			<md-icon md-svg-icon="img/icons/done.svg"></md-icon>
+			Unisci
+		</md-button>
+	</div>
+
+	<div layout="column" layout-align="start stretch" class="full-height" flex layout-padding>
+		<div ng-repeat="item in mergepdf.items"> <!-- importantissimo div inutile, fixa un bug grafico -->
+			<md-divider ng-if="!$first" ></md-divider>
+			<div layout="row" layout-align="start center">
+				<md-button class="md-icon-button md-warn" ng-click="mergepdf.remove(item)">
+					<md-icon md-svg-icon="img/icons/delete.svg"></md-icon>
+					<md-tooltip md-direction="top">Rimuovi</md-tooltip>
+				</md-button>
+
+				<div flex layout="column" layout-align="start stretch">
+					<span class="md-body-1">{{item.al_descr}}</span>
+					<span class="md-caption">{{item.al_size | filesize_currency}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</md-card>

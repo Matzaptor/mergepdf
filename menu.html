@@ -1,0 +1,39 @@
+<md-button class="md-icon-button" ng-click="page('welcome_page')" ng-class="{'selected': page()=='welcome_page'}" aria-label="welcome_page">
+	<md-icon md-svg-icon="img/icons/home.svg"></md-icon>
+	<md-tooltip md-direction="bottom">Home</md-tooltip>
+</md-button>
+<md-button class="md-icon-button" ng-click="page('mergepdf')" ng-class="{'selected': page()=='mergepdf'}" aria-label="mergepdf">
+	<md-icon md-svg-icon="img/icons/link.svg"></md-icon>
+	<md-tooltip md-direction="bottom">Unisci PDF</md-tooltip>
+</md-button>
+<md-button class="md-icon-button" ng-click="page('to1.4')" ng-class="{'selected': page()=='to1.4'}" aria-label="to1.4">
+	<md-icon md-svg-icon="img/icons/build.svg"></md-icon>
+	<md-tooltip md-direction="bottom">Converti PDF a PDF/A (v1.4)</md-tooltip>
+</md-button>
+<md-button class="md-icon-button" ng-click="page('compress')" ng-class="{'selected': page()=='compress'}" aria-label="compress">
+	<md-icon md-svg-icon="img/icons/compress.svg"></md-icon>
+	<md-tooltip md-direction="bottom">Comprimi PDF</md-tooltip>
+</md-button>
+<div flex></div>
+<md-menu md-position-mode="target-right target">
+	<md-button class="md-icon-button" aria-label="sidenav" ng-click="$mdMenu.open()">
+		<md-icon md-svg-icon="img/icons/more.svg"></md-icon>
+	</md-button>
+	<md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
+		<md-menu-item>
+			<md-button>
+				<md-icon md-svg-icon="img/icons/person.svg"></md-icon>{{logged_user.username}} - {{logged_user.descr}}
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button ng-click="change_password()">
+				<md-icon md-svg-icon="img/icons/key.svg"></md-icon> Cambia password
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button ng-click="logout()">
+				<md-icon md-svg-icon="img/icons/logout.svg"></md-icon> LOGOUT
+			</md-button>
+		</md-menu-item>
+	</md-menu-content>
+</md-menu>

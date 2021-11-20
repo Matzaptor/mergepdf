@@ -1,0 +1,13 @@
+<md-card
+	layout="column" layout-align="start stretch" layout-padding
+	class="full-height"
+	flex
+>
+	<div layout="row" layout-align="space-around center">
+		<md-button class="md-raised md-primary" ng-click="click_element_by_id('attach')">
+			<md-icon md-svg-icon="img/icons/build.svg"></md-icon>
+			Converti PDF a PDF/A (v1.4)
+		</md-button>
+		<input id="attach" type="file" accept="application/pdf" multiple hide ng-model="converter.model" ub-input-model-change="converter.to1_4">
+	</div>
+</md-card>

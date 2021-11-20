@@ -1,0 +1,14 @@
+
+.login-logo {
+	width: 100%;
+	max-width: 400px;
+	margin-top: 20px;
+	margin-bottom: 35px;
+	background-color: #333;
+}
+
+.login-card {
+	width: calc(100% - 16px); /* margine della card*/
+	max-width: 460px;
+	padding: 2%;
+}

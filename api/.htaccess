@@ -1,0 +1,20 @@
+# Always set these headers.
+Header always set Access-Control-Allow-Credentials "true"
+# la riga subito sotto serve per accettare qualsiasi richiesta da parte di un host che
+# - usi il protocollo http o https
+# - nessuno o un qualsiasi sottodominio
+# - un dominio tra: localhost, dev, test, show, ubware, ip di produzione, dns...
+# - nessuna o qualsiasi porta specificata
+SetEnvIf Origin "http(s)?(ionic)?:\/\/(.*\.)*(localhost|192\.168\.8\.104|dev104\.local)(:\d+)?$" AccessControlAllowOrigin=$0
+Header always set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type"
+
+# 31536000 = un anno in secondi
+php_value session.cookie_lifetime 31536000
+php_value session.gc_maxlifetime 31536000
+
+# Added a rewrite to respond with a 200 SUCCESS on every OPTIONS request.
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]

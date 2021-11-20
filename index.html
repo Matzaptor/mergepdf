@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel="shortcut icon" href="favicon.png" type="image/png"/>
+		<title>Merge PDF</title>
+
+		<!-- include cordova -->
+		<script src="cordova.js"></script>
+
+		<!-- include angular -->
+		<script src="lib/angular-1.7.5/angular.min.js"></script>
+		<script src="lib/angular-1.7.5/angular-animate.min.js"></script>
+		<script src="lib/angular-1.7.5/angular-aria.min.js"></script>
+		<script src="lib/angular-1.7.5/angular-messages.min.js"></script>
+		<script src="lib/angular-1.7.5/i18n/angular-locale_it-it.js"></script>
+		<script src="lib/angular-1.7.5/angular-sanitize.min.js"></script>
+		<script src="lib/angular-1.7.5/angular-animate.min.js"></script>
+
+		<!-- include inic-native
+		<script src="lib/ionic-native/ionic.native.min.js"></script> -->
+		<!-- include ng-cordova -->
+		<script src="lib/ng-cordova/ng-cordova.js"></script>
+
+		<!-- include ng-storage -->
+		<script src="lib/ng-storage/ng-storage.min.js"></script>
+
+		<!-- include angular-material -->
+		<script src="lib/angular-material-1.1.10/angular-material.min.js"></script>
+		<link rel="stylesheet" href="lib/angular-material-1.1.10/angular-material.min.css">
+	</head>
+
+	<body ng-app="ubapp" layout="column" layout-align="start stretch" ng-controller="main" ng-cloak>
+
+		<div ng-controller="login" ng-init="ricordami()"></div>
+		<div ng-if="page()=='login'" layout="column" layout-align="start center" flex class="full-height" ng-include="'login.html'"></div>
+		<div ng-if="page()=='registra'" layout="column" layout-align="start center" flex class="full-height" ng-include="'registra.html'"></div>
+		<div ng-if="page()=='recupera_step1'" layout="column" layout-align="start center" flex class="full-height" ng-include="'recupera_step1.html'"></div>
+		<div ng-if="page()=='recupera_step2'" layout="column" layout-align="start center" flex class="full-height" ng-include="'recupera_step2.html'"></div>
+
+		<div ng-if="logged_user" layout="column" layout-align="start stretch" flex class="full-height" ng-init="page(welcome(logged_user))">
+
+			<div md-colors="{background: colors.primary_toolbar}" layout="row" layout-align="start center" class="toolbar" ng-include="'menu.html'" ng-cloak></div>
+
+			<div
+				ng-if="page()=='welcome_page'"
+				ng-include="'welcome_page.html'"
+				layout="column" layout-align="start stretch" class="full-height" flex layout-padding
+			></div>
+
+			<div
+				ng-if="page()=='mergepdf'"
+				ng-include="'mergepdf.html'"
+				ng-controller="mergepdf"
+				layout="column" layout-align="start stretch" class="full-height" flex layout-padding
+			></div>
+
+			<div
+				ng-if="page()=='to1.4'"
+				ng-include="'to1.4.html'"
+				ng-controller="converter"
+				layout="column" layout-align="start stretch" class="full-height" flex layout-padding
+			></div>
+
+			<div
+				ng-if="page()=='compress'"
+				ng-include="'compress.html'"
+				ng-controller="converter"
+				layout="column" layout-align="start stretch" class="full-height" flex layout-padding
+			></div>
+
+		</div>
+
+		<div ng-show="ajax_loading" md-colors="{background: 'grey-700-0.5'}" class="ub-absolute full-height" layout="row" layout-align="center center" flex layout-fill>
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript" src="config/config.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+
+<script type="text/javascript" src="js/mergepdf.js"></script>
+<script type="text/javascript" src="js/converter.js"></script>
+
+<link href="css/main.css" rel="stylesheet">
+<link href="css/card.css" rel="stylesheet">
+<link href="css/toolbar.css" rel="stylesheet">
+<link href="css/dialog.css" rel="stylesheet">
+<link href="css/block.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
+<link href="css/welcome_page.css" rel="stylesheet">

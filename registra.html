@@ -1,0 +1,34 @@
+<img src="img/logo.jpg" class="login-logo" />
+
+<md-card class="login-card">
+	<md-button ng-if="key !== undefined" class="md-fab md-mini card-toggle card-toggle-top card-toggle-right" md-colors="{background: key ? 'green' : 'red'}" ng-click="toggle_key()">
+		<md-icon md-svg-icon="img/icons/tag.svg"></md-icon>
+		<md-tooltip md-direction="top">Accedi con chiave</md-tooltip>
+	</md-button>
+	<div layout="column" layout-align="start stretch">
+		<form>
+			<div layout="column" layout-align="start stretch" layout-padding>
+				<div class="md-headline">Registrazione</div>
+				<div class="md-subhead">Registrati per poter accedere all'app</div>
+
+				<md-input-container>
+					<label>Username</label>
+					<input type="text" ng-model="loginBean.username" ng-pattern="/^[a-zA-Z0-9]*$/" required>
+				</md-input-container>
+				<md-input-container>
+					<label>E-Mail</label>
+					<input type="email" ng-model="loginBean.mail" required>
+				</md-input-container>
+
+				<md-button ng-disabled="!loginBean.chk1 || !loginBean.chk2 || !loginBean.chk3 || !loginBean.username || !loginBean.mail || !loginBean.password || loginBean.password != loginBean.password_confirm" class="md-raised md-primary" type="submit" ng-click="registra(loginBean.username, loginBean.password, loginBean.mail, loginBean.cf)" >
+					Registrami
+				</md-button>
+				<input type="submit" hide />
+
+				<md-button class="md-primary" ng-click="page('login')">
+					Ho già un account
+				</md-button>
+			</div>
+		</form>
+	</div>
+</md-card>

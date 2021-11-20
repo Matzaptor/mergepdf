@@ -1,0 +1,25 @@
+<img src="img/logo.jpg" class="login-logo" />
+
+<md-card class="login-card">
+	<div layout="column" layout-align="start stretch">
+		<form>
+			<div layout="column" layout-align="start stretch" layout-padding>
+				<div class="md-headline">Recupera</div>
+				<div class="md-subhead">Inserisci il tuo username per recuperare la tua password</div>
+
+				<md-input-container>
+					<label>Username</label>
+					<input ub-focus type="text" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model="loginBean.username" ng-required="true">
+				</md-input-container>
+				<md-button ng-disabled="!loginBean.username" class="md-raised md-primary" type="submit" ng-click="recupera_step1(loginBean.username)">
+					Recupera
+				</md-button>
+				<input type="submit" hide />
+
+				<md-button class="md-primary" ng-click="page('login')">
+					Ricordo già la mia password
+				</md-button>
+			</div>
+		</form>
+	</div>
+</md-card>
